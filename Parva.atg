@@ -167,7 +167,7 @@ PRODUCTIONS
     | "null"                                 (. con.type = Types.nullType; con.value = 0; .)
   .
 
-  VarDeclarations<StackFrame frame>          (. int type; boolean finalised = false; .)
+  VarDeclarations<StackFrame frame>          (. int type; boolean finalised = false; .) /*added final keyword and finalised boolean for task 5++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
   =  [ "final"								 (. finalised = true;.)
 	]
 	 Type<out type>
@@ -239,12 +239,7 @@ PRODUCTIONS
                                                 else {
 													SemError("unexpected subscript");
 													/* task 4: make a new entry for an array and insert into the symbol table as nullType array +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-													entry = new Entry();
 													entry.type = Types.nullType;
-													entry.name = name;
-													entry.declared = true;
-													entry.kind = Kinds.Var;
-													Table.insert(entry);
 													des = new DesType(entry);
 													des.type --;
 													
